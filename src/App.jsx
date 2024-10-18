@@ -27,7 +27,6 @@ function App() {
     <React.Fragment>
             <div className="topbar">
                 <img className="logo" src="/logo-new.png" />
-
                 <div className="chooseYear">
                     <i className="fas fa-calendar-alt"></i>
                     <select className="yearselector" value={year ? year : currentyear} onChange={(event) => setYear(event.target.value)}>
@@ -35,12 +34,6 @@ function App() {
                             return (<option key={i} value={year.name}>{year.name}</option>)
                         })}
                     </select>
-                </div>
-
-                <div className="topbar_right">
-                    <ul>
-                        <li className="currentUser"><i className="fas fa-user-circle"></i> {localStorage.getItem('name')}</li>
-                    </ul>
                 </div>
             </div>
             
@@ -50,7 +43,6 @@ function App() {
                         <div className="col-md-6">
                             <Books year={year} />
                         </div>
-
                         <div className="col-md-3">
                             <Genres year={year} />
                         </div>
