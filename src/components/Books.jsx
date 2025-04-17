@@ -8,6 +8,7 @@ const Books = (props) => {
         ]);
 
         const yearbooks = await data.getBooksPerYearPerGenres(props.year);
+        console.log(yearbooks);
 
         if(yearbooks){
             charts.initChart(yearbooks, props.year);

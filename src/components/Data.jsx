@@ -1,5 +1,5 @@
 export const getReadingYears = () => {
-    return fetch('https://novelmetrix-api.jordyvanzeeland.nl/years', {
+    return fetch('http://localhost:8000/api/years', {
         "method": "GET",
     })
         .then(response => response.json())
@@ -9,7 +9,7 @@ export const getReadingYears = () => {
 }
 
 export const getBooksPerYearPerGenres = (year) => {
-    return fetch('https://novelmetrix-api.jordyvanzeeland.nl/stats/books/permonth', {
+    return fetch('http://localhost:8000/api/books/permonth', {
         "method": "GET",
         "headers": {
             "year": year
@@ -22,7 +22,7 @@ export const getBooksPerYearPerGenres = (year) => {
 }
 
 export const getGenresCount = (year) => {
-    return fetch('https://novelmetrix-api.jordyvanzeeland.nl/stats/books/genres', {
+    return fetch('http://localhost:8000/api/books/genres/count', {
         "method": "GET",
         "headers": {
             "year": year
@@ -35,7 +35,7 @@ export const getGenresCount = (year) => {
 }
 
 export const getRatingsCount = (year) => {
-    return fetch('https://novelmetrix-api.jordyvanzeeland.nl/stats/books/ratings', {
+    return fetch('http://localhost:8000/api/books/ratings', {
         "method": "GET",
         "headers": {
             "year": year
@@ -48,7 +48,7 @@ export const getRatingsCount = (year) => {
 }
 
 export const getLanguagesBooks = (year) => {
-    return fetch('https://novelmetrix-api.jordyvanzeeland.nl/stats/books/en', {
+    return fetch('http://localhost:8000/api/books/en', {
         "method": "GET",
         "headers": {
             "year": year

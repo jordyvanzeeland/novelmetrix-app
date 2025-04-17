@@ -59,6 +59,8 @@ export const initChart = (data, year) => {
     ----------------------------------
     */
 
+    console.log(dataSet);
+
     $("canvas#chart").remove();
     data && data.length > 0 ? $(".no-data-msg").remove() : $("canvas#chartGenres").remove();
     data && data.length > 0 ? $("div.books-per-month").append('<canvas id="chart"></canvas>') : $("div.books-per-month").append('<div class="no-data-msg">Geen data beschikbaar</div>');
