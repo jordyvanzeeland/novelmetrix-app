@@ -30,8 +30,8 @@ function App() {
                 <div className="chooseYear">
                     <i className="fas fa-calendar-alt"></i>
                     <select className="yearselector" value={year ? year : currentyear} onChange={(event) => setYear(event.target.value)}>
-                        {readingYears.map((year, i) => {
-                            return (<option key={i} value={year}>{year}</option>)
+                        {readingYears.map((data, i) => {
+                            return (<option key={i} value={data.year}>{data.year}</option>)
                         })}
                     </select>
                 </div>

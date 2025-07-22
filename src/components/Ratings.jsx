@@ -25,7 +25,7 @@ const Ratings = (props) => {
 
             for(var i = 5; i > 0; i--){
                 yearratings.forEach(rating => {
-                    if(rating.rating === i){
+                    if(parseInt(rating.rating) === i){
                         ratingsArray[i] = rating.count
                     }
                 });

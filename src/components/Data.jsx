@@ -1,5 +1,7 @@
+const ApiUrl = "http://localhost:8000";
+
 export const getReadingYears = () => {
-    return fetch('http://localhost:8000/api/years', {
+    return fetch(ApiUrl + '/api/years', {
         "method": "GET",
     })
         .then(response => response.json())
@@ -9,7 +11,7 @@ export const getReadingYears = () => {
 }
 
 export const getBooksPerYearPerGenres = (year) => {
-    return fetch('http://localhost:8000/api/books/permonth', {
+    return fetch(ApiUrl + '/api/books/permonth', {
         "method": "GET",
         "headers": {
             "year": year
@@ -22,7 +24,7 @@ export const getBooksPerYearPerGenres = (year) => {
 }
 
 export const getGenresCount = (year) => {
-    return fetch('http://localhost:8000/api/books/genres/count', {
+    return fetch(ApiUrl + '/api/books/genres/count', {
         "method": "GET",
         "headers": {
             "year": year
@@ -35,7 +37,7 @@ export const getGenresCount = (year) => {
 }
 
 export const getRatingsCount = (year) => {
-    return fetch('http://localhost:8000/api/books/ratings', {
+    return fetch(ApiUrl + '/api/books/ratings', {
         "method": "GET",
         "headers": {
             "year": year
@@ -48,7 +50,7 @@ export const getRatingsCount = (year) => {
 }
 
 export const getLanguagesBooks = (year) => {
-    return fetch('http://localhost:8000/api/books/en', {
+    return fetch(ApiUrl + '/api/books/en', {
         "method": "GET",
         "headers": {
             "year": year
