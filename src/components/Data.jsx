@@ -10,6 +10,19 @@ export const getReadingYears = () => {
         })
 }
 
+export const getDashStats = (year) => {
+    return fetch(ApiUrl + '/api/books/stats', {
+        "method": "GET",
+        "headers": {
+            "year": year
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            return data
+        })
+}
+
 export const getBooksPerYearPerGenres = (year) => {
     return fetch(ApiUrl + '/api/books/permonth', {
         "method": "GET",

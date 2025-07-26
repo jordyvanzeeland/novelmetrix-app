@@ -1,5 +1,4 @@
 export const initChart = (data, year) => {
-
     /*
     ----------------------------------
          Books per month per genre

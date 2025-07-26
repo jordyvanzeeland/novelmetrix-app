@@ -1,22 +1,18 @@
 import React, { useEffect } from 'react';
+import { initChart } from "./Charts.jsx";
 
-const Books = (props) => {
+const Books = ({ stats, year }) => {
     const getData = async () => {
-        const [data, charts] = await Promise.all([
-            import("./Data.jsx"),
-            import("./Charts.jsx")
-        ]);
-
-        const yearbooks = await data.getBooksPerYearPerGenres(props.year);
+        const yearbooks = stats;
 
         if(yearbooks){
-            charts.initChart(yearbooks, props.year);
+            initChart(yearbooks, parseInt(year));
         }
     }
 
     useEffect(() => {
         getData();
-    }, [props.year]);
+    }, [stats]);
 
     return (
         <React.Fragment>

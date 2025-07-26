@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { getLanguagesBooks } from "./Data.jsx";
+import { initDoughnut2 } from "./Charts.jsx";
 
-const Languages = (props) => {
+const Languages = ({ stats, year }) => {
     const [languageBooks, setLanguageBooks] = useState([])
 
     const getData = async () => {
-        const [data, charts] = await Promise.all([
-            await import("./Data.jsx"),
-            await import("./Charts.jsx")
-        ]);
-
-        const languagebooks = await data.getLanguagesBooks(props.year)
+        const languagebooks = stats
 
         if(languagebooks){
-            charts.initDoughnut2(languagebooks, props.year);
+            initDoughnut2(languagebooks, year);
             setLanguageBooks(languagebooks);
         }
     }
 
     useEffect(() => {
         getData();
-    }, [props.year])
+    }, [stats])
 
     return (
         <React.Fragment>

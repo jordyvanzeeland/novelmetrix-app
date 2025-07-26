@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { initDoughnut } from "./Charts.jsx";
 
-const Genres = (props) => {
+const Genres = ({ stats, year }) => {
     const [genresbooks, setGenresBooks] = useState([])
 
     const getData = async () => {
-        const [data, charts] = await Promise.all([
-            await import("./Data.jsx"),
-            await import("./Charts.jsx")
-        ]);
-        
-        const yeargenres = await data.getGenresCount(props.year);
+        const yeargenres = stats;
 
         if(yeargenres){
-            charts.initDoughnut(yeargenres, props.year);
+            initDoughnut(yeargenres, parseInt(year));
             setGenresBooks(yeargenres);
         }
     }
 
     useEffect(() => {
         getData();
-    }, [props.year]);
+    }, [stats]);
 
     return (
         <React.Fragment>

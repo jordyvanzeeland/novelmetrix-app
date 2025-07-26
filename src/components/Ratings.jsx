@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { getRatingsCount } from "./Data.jsx";
 
-const Ratings = (props) => {
+const Ratings = ({ stats, year }) => {
     const [ratings, setRatings] = useState([]);
     const [totalRatings, setTotalRatings] = useState(0);
 
     const getData = async () => {
-        const data = await import("./Data.jsx");
-        const yearratings = await data.getRatingsCount(props.year);
+        const yearratings = stats;
 
         if(yearratings){
             var total = 0;
@@ -38,7 +38,7 @@ const Ratings = (props) => {
 
     useEffect(() => {
         getData();
-    }, [props.year])
+    }, [stats])
 
     return (
         <React.Fragment>

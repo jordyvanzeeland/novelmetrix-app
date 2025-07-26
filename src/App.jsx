@@ -4,6 +4,7 @@ import Genres from "./components/Genres";
 import Books from "./components/Books";
 import Ratings from "./components/Ratings";
 import Languages from "./components/Languages";
+import { getReadingYears, getDashStats } from "./components/Data";
 import moment from 'moment';
 import 'flag-icon-css/css/flag-icons.min.css';
 moment.locale('nl');
@@ -11,12 +12,22 @@ moment.locale('nl');
 function App() {
   const currentyear = new Date().getFullYear();
   const [year, setYear] = useState(currentyear);
+
+  const [booksMonth, setBooksMonth] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  const [ratings, setRatings] = useState([]);
   const [readingYears, setReadingYears] = useState([]);
 
   const getData = async () => {
-    const data = await import("./components/Data.jsx");
-    const getYears = await data.getReadingYears();
+    const getYears = await getReadingYears();
+    const getStats = await getDashStats(year ? year : currentyear);
     setReadingYears(getYears);
+
+    setBooksMonth(getStats.books);
+    setGenres(getStats.genres);
+    setLanguages(getStats.languages);
+    setRatings(getStats.ratings);
   }
 
   useEffect(() => {
@@ -36,23 +47,24 @@ function App() {
                     </select>
                 </div>
             </div>
-            
+
             <div className="content">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6">
-                            <Books year={year} />
+                            <Books stats={booksMonth} year={year} />
                         </div>
                         <div className="col-md-3">
-                            <Genres year={year} />
+                            <Genres stats={genres} year={year} />
                         </div>
                         <div className="col-md-3">
-                            <Ratings year={year} />
-                            <Languages year={year} />
+                            <Ratings stats={ratings} year={year} />
+                            <Languages stats={languages} year={year} />
                         </div>
                     </div>
                 </div>
             </div>
+            
         </React.Fragment>
     )
 }
