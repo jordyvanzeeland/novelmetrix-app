@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getRatingsCount } from "./Data.jsx";
 
 const Ratings = ({ stats, year }) => {
     const [ratings, setRatings] = useState([]);

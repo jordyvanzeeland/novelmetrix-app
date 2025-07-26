@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getLanguagesBooks } from "./Data.jsx";
 import { initDoughnut2 } from "./Charts.jsx";
 
 const Languages = ({ stats, year }) => {
