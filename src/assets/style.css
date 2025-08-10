@@ -3,7 +3,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 html, body{
-    background:#fafdfb;
+    background:rgba(64, 81, 129, 0.03);
     margin:0;
     padding:0;
     /* font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif; */
@@ -32,43 +32,11 @@ html, body{
 
 
   .content{
-    padding: 110px 30px 30px 30px;
+    padding: 0 0 0 70px;
   }
 
-  .content-manage{
-    padding: 30px;
-    margin-left:200px;
-  }
-
-  .content-manage .search-bar, .content-manage .search-bar input{
-    width:100%
-  }
-
-  .content-manage .dataTables_filter, .content-manage .dataTables_filter label, .content-manage .dataTables_filter label input{
-    width:100%;
-  }
-
-  .content-manage .DataTable_Container{
-    margin-top:0 !important;
-  }
-
-  .content-manage .btn-success{
-    float: right;
-    font-size: 14px;
-    padding: 7px 20px;
-  }
-
-  .content-manage .btn-warning{
-    margin-right:5px;
-  }
-
-  .content-manage .modal{
-    background:rgba(0,0,0,0.3);
-  }
-
-  .content-manage .progress{
-    height: 20px;
-    border-radius: 0;
+  .content .charts{
+    padding: 100px 30px 0 30px;
   }
 
   .modal{
@@ -161,10 +129,8 @@ html, body{
   .books-per-month, .genresPercent, .books-per-country, .book, .ratings, .readed{
     background: #ffffff;
     padding: 20px;
-    -webkit-box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69 .15);
-    box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin-bottom: 20px;
-    border-radius: 10px;
     padding:30px;
   }
 
@@ -180,8 +146,7 @@ html, body{
     margin-top: 5px;
   }
 
-  .book_rating i{
-    font-family: "Font Awesome 5 Free";
+  .book_rating i, .book_rating svg{
     color: #ffbe0e;
   }
 
@@ -196,82 +161,12 @@ html, body{
   }
 
   .sidebar{
-    background: #333333;
+    background: #405181;
     width: 70px;
     height: 100vh;
     position: fixed;
-    padding-top: 67px;
+    z-index: 10;
   }
-
-  .sidebar span{
-    color: rgba(255,255,255,0.25);
-    padding: 20px 20px 10px 20px;
-    display: block;
-  }
-
-  /* .sidebar .menu-item{
-    text-align: center;
-    padding: 15px 0;
-  }
-
-  .sidebar .menu-item i{
-    font-size: 25px;
-    color: #727794;
-  }
-
-  .sidebar .menu-item.selected i{
-    color:#fff;
-  }
-
-  .sidebar svg{
-    color:#ffffff;
-  }
-
-  .sidebar ul {
-    padding: 0;
-    margin:0;
-  }
-  
-  .sidebar ul li {
-    list-style-type: none;
-    font-size: 14px;
-    font-weight: 400;
-    display: block;
-  }
-  
-  .sidebar ul li a {
-    color: #a9b7d0;
-    text-decoration: none;
-    padding: 12px 15px;
-    display:block;
-    width:100%;
-    border-radius: 10px;
-  }
-  
-  .sidebar ul li a.active {
-    color: #ffffff;
-    background: rgba(0,0,0,0.3) !important;
-  }
-  
-  .sidebar ul li a.active i {
-    color: #8066ee;
-  }
-  
-  .sidebar i {
-    color: #a9b7d0;
-    font-size: 13px;
-    width: 10px;
-    display: inline-block;
-    text-align: center;
-    line-height: 1;
-    margin-right: 12px;
-  } */
-
-  .sidebar h3{
-    color: rgba(255,255,255,0.3);
-    font-size:12px;
-    padding-bottom:5px;
-}
 
 .sidebar ul{
     padding:0;
@@ -283,7 +178,7 @@ html, body{
     list-style-type: none;
     font-weight: 300;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 16px;
     padding: 20px 0px;
     text-align: center;
 }
@@ -662,9 +557,10 @@ html, body{
   box-shadow: none;
 }
 
-.login button{
+.login button, .login button:hover{
   padding: 10px 30px;
   background: #405181;
+  color: #ffffff;
   border: none;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
   margin-top: 10px;
@@ -672,41 +568,9 @@ html, body{
   width: 100%;
 }
 
-/* .login form input{
-    background:#f9f9f9;
-    border:none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size:13px;
-}
-
-/* .login form .icon{
-    position: absolute;
-    right: 44px;
-    margin-top: 7px;
-}
-
-/* .login form .icon i{
-    color:#aaa;
-    font-size:13px;
-}
-
-.login form button{
-    background:#405181;
-    width:100%;
-    border: none;
-    padding: 10px 15px;
-    font-size: 13px;
-}
-
-.login form button:hover{
-    background:#405181;
-} */ 
-
 .topbar{
   background: #ffffff;
-  border-top: solid 10px #405181;
-  box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   width: 100%;
   min-height: 50px;
   padding-left:30px;

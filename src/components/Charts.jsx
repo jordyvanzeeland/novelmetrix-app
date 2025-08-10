@@ -34,7 +34,7 @@ export const initChart = (data, year) => {
                 }
 
                 for (var j = 0; j < data.length; j++) {
-                    if (data && data[j] && data[j].readed == month + '-' + year) {
+                    if (data && data[j] && data[j].readed == year + '-' + month + '-01') {
                         if (data[j].genre == genre) {
                             genreData[i] = data[j].count;
                         }
