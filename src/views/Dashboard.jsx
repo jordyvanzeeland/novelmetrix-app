@@ -4,11 +4,11 @@ import Genres from "../components/Genres";
 import Books from "../components/Books";
 import Ratings from "../components/Ratings";
 import Languages from "../components/Languages";
-import { getReadingYears, getDashStats } from "../components/Data";
 import moment from 'moment';
 import 'flag-icon-css/css/flag-icons.min.css';
 import withAuth from "../components/WithAuth";
 import Sidebar from "../components/Sidebar";
+import { fetchApi } from "../Functions";
 moment.locale('nl');
 
 const Dashboard = () => {
@@ -22,8 +22,11 @@ const Dashboard = () => {
   const [readingYears, setReadingYears] = useState([]);
 
   const getData = async () => {
-    const getYears = await getReadingYears();
-    const getStats = await getDashStats(year ? year : currentyear);
+    const getYears = await fetchApi('GET', 'years');
+    const getStats = await fetchApi('GET', 'books/stats', {
+        "year": year
+    });
+
     setReadingYears(getYears);
 
     setBooksMonth(getStats.books);

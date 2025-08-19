@@ -7,6 +7,7 @@ const Sidebar = () => {
             <ul className="sidebar-menu">
                 <NavLink to="/" exact="true"><li><i className="fa-solid fa-chart-line"></i></li></NavLink>
                 <NavLink to="/books" exact="true"><li><i className="fa-solid fa-book"></i></li></NavLink>
+                <NavLink to="/write/stories" exact="true"><li><i className="fa-solid fa-pencil"></i></li></NavLink>
             </ul>
         </div>
     )
