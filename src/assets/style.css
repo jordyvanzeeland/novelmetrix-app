@@ -224,7 +224,6 @@ html, body{
   width:300px;
   height: 100vh;
   position: fixed;
-  padding: 0 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
@@ -235,16 +234,73 @@ html, body{
 
 .sidebar_write .list_stories li{
   list-style-type: none;
-  padding: 10px 0;
   border-bottom: solid 1px #eee;
+  padding: 15px 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar_write .list_stories a.active li{
+  list-style-type: none;
+  background: #f1f1f1;
+  padding: 15px 20px;
+  color: #405181;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .sidebar_write .list_stories li:last-child{
   border-bottom: none;
 }
 
+.sidebar_write .list_stories a{
+  text-decoration: none;
+}
+
 .content_write{
-  padding-left: 320px;
+  padding-left: 330px;
+  padding-right: 30px;
+}
+
+.content_write .chapters{
+  background: #ffffff;
+  margin-right: 30px;
+  margin-top: 30px;
+  width: 100%;
+  border: solid 1px #ccc;
+}
+
+.content_write .chapters h3{
+  background: rgba(64, 81, 129, 0.03);
+  border-bottom: solid 1px #ccc;
+  font-size: 15px;
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.content_write .chapters ul{
+  margin: 0;
+  padding: 0;
+}
+
+.content_write .chapters a{
+  text-decoration: none;
+}
+
+.content_write .chapters li{
+  list-style-type: none;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+.content_write .chapters a.active li{
+  list-style-type: none;
+  background: #f1f1f1;
+  padding: 10px 20px;
+  color: #405181;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .topbar button{
@@ -713,7 +769,7 @@ html, body{
 }
 
 .write_logo{
-  padding: 13px 0;
+  padding: 20px;
   display: block;
   font-size: 16px;
 }
