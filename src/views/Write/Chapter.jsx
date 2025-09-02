@@ -10,7 +10,7 @@ import { NavLink, useParams } from "react-router-dom";
 import Quill from 'quill';
 moment.locale('nl');
 
-const Stories = (props) => {
+const Chapter = (props) => {
     const { storyid, chapterid } = useParams();
     const [stories, setStories] = useState([]);
     const [currentStory, setCurrentStory] = useState([]);
@@ -57,6 +57,7 @@ const Stories = (props) => {
 
             <div className="content">
                 <div className="sidebar_write">
+                    <button className='btn btn-primary'><i class="fa-solid fa-plus"></i></button>
                     <span className="write_logo"><i style={{ color: "#405181" }} class="fa-solid fa-pencil"></i> NovelStudio</span>
 
                     <ul className="list_stories">
@@ -71,12 +72,15 @@ const Stories = (props) => {
                 <div className="content_write">
                     <div className="row">
                         <div className="col-md-8">
+                            <button className='btn btn-green'><i class="fa-solid fa-check"></i></button>
+                            <button className='btn btn-red'><i className="fa-solid fa-trash-can"></i></button>
                             <h1 style={{ marginTop: "30px" }}>{storyid ? (currentStory && currentStory.story ? currentStory.story.name : "Stories") : "Stories"}</h1>
                             <input type="text" className="form-control" id="chapter_title" name="chapter_title" defaultValue={currentChapter ? currentChapter.name : ''} style={{ marginBottom: "20px", marginTop: "10px" }}/>
                             <div ref={editorRef} style={{ height: "500px", background: "#ffffff" }}></div>
                         </div>
                         <div className="col-md-4">
                             <div className="chapters">
+                                <button className='btn btn-primary'><i class="fa-solid fa-plus"></i></button>
                                 <h3>Hoofdstukken</h3>
                                 <ul>
                                     {currentStory && currentStory.chapters ? currentStory.chapters.map(chapter => {
@@ -94,4 +98,4 @@ const Stories = (props) => {
     )
 }
 
-export default withAuth(Stories)
+export default withAuth(Chapter)
