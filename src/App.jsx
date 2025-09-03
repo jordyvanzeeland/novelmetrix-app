@@ -12,8 +12,9 @@ function App() {
       <Routes>
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/write/stories" element={<Story />} />
-          <Route exact path="/write/stories/:storyid" element={<Story />} />
-          <Route exact path="/write/stories/:storyid/chapter/:chapterid" element={<Chapter />} />
+          <Route exact path="/write/stories/new" element={<Story new="true" />} />
+          <Route exact path="/write/story/:storyid" element={<Story />} />
+          <Route exact path="/write/story/:storyid/chapter/:chapterid" element={<Chapter />} />
           <Route exact path="/login" element={<Login />} />
       </Routes>
     </Router>
