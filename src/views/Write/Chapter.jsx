@@ -112,6 +112,8 @@ const Chapter = (props) => {
                                 <button className='btn btn-primary' onClick={() => navigate(`/write/story/${storyid}/chapter/new`)}><i className="fa-solid fa-plus"></i></button>
                                 <h3>Hoofdstukken</h3>
                                 <ul>
+                                    {currentStory && currentStory.chapters && currentStory.chapters.length === 0 && (<li>Geen hoofdstukken om weer te geven</li>)}
+
                                     {currentStory && currentStory.chapters ? currentStory.chapters.map((chapter, i) => {
                                         return <NavLink key={i} to={`/write/story/${props.router.storyid}/chapter/${chapter.id}`} exact="true"><li>{chapter.name}</li></NavLink>
                                     }) : ''}
