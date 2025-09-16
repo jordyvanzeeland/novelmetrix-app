@@ -52,13 +52,13 @@ const Story = (props) => {
 
             <div className="content">
                 <div className="sidebar_write">
-                    <button className='btn btn-primary' onClick={() => navigate('/write/stories/new')}><i class="fa-solid fa-plus"></i></button>
-                    <span className="write_logo"><i style={{ color: "#405181" }} class="fa-solid fa-pencil"></i> NovelStudio</span>
+                    <button className='btn btn-primary' onClick={() => navigate('/write/stories/new')}><i className="fa-solid fa-plus"></i></button>
+                    <span className="write_logo"><i style={{ color: "#405181" }} className="fa-solid fa-pencil"></i> NovelStudio</span>
 
                     <ul className="list_stories">
-                        {stories.map(story => {
+                        {stories.map((story, i) => {
                             return (
-                                <NavLink to={`/write/story/${story.id}`} exact="true"><li>{story.name}</li></NavLink>
+                                <NavLink key={i} to={`/write/story/${story.id}`} exact="true"><li>{story.name}</li></NavLink>
                             )
                         })}
                     </ul>
@@ -84,17 +84,17 @@ const Story = (props) => {
                                 <React.Fragment>
                                     <button className='btn btn-red' onClick={() => deleteStory()}><i className="fa-solid fa-trash-can"></i> Verwijderen</button>
                                     <form method="POST" onSubmit={(event) => addStory(event)}>
-                                        <button type="submit" className='btn btn-green'><i class="fa-solid fa-check"></i> Opslaan</button>
+                                        <button type="submit" className='btn btn-green'><i className="fa-solid fa-check"></i> Opslaan</button>
                                         
                                         <h1 style={{ margin: "30px 0" }}>{storyid ? (currentStory && currentStory.story ? currentStory.story.name : "Stories") : "Stories"}</h1>
 
-                                        <div class="form-group">
-                                            <label for="chapter_title">Naam</label>
+                                        <div className="form-group">
+                                            <label htmlFor="chapter_title">Naam</label>
                                             <input type="text" className="form-control" id="name" name="name" defaultValue={currentStory && currentStory.story ? currentStory.story.name : ''} style={{ marginBottom: "20px", marginTop: "10px" }}/>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="chapter_title">Genre</label>
+                                        <div className="form-group">
+                                            <label htmlFor="chapter_title">Genre</label>
                                             <input type="text" className="form-control" id="genre" name="genre" defaultValue={currentStory && currentStory.story ? currentStory.story.genre : ''} style={{ marginBottom: "20px", marginTop: "10px" }}/>
                                         </div>
                                     </form>
@@ -105,11 +105,11 @@ const Story = (props) => {
                         <div className="col-md-4">
                             {storyid || props.new ?
                                 <div className="chapters">
-                                    <button className='btn btn-primary'><i class="fa-solid fa-plus"></i></button>
+                                    <button className='btn btn-primary' onClick={() => navigate(`/write/story/${storyid}/chapter/new`)}><i className="fa-solid fa-plus"></i></button>
                                     <h3>Hoofdstukken</h3>
                                     <ul>
-                                        {currentStory && currentStory.chapters ? currentStory.chapters.map(chapter => {
-                                            return <NavLink to={`/write/story/${props.router.storyid}/chapter/${chapter.id}`} exact="true"><li>{chapter.name}</li></NavLink>
+                                        {currentStory && currentStory.chapters ? currentStory.chapters.map((chapter, i) => {
+                                            return <NavLink key={i} to={`/write/story/${props.router.storyid}/chapter/${chapter.id}`} exact="true"><li>{chapter.name}</li></NavLink>
                                         }) : ''}
                                     </ul>
                                 </div>

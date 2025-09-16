@@ -23,9 +23,7 @@ const Chapter = (props) => {
         event.preventDefault();
         let data = '';
 
-        console.log(currentChapter);
-
-        if(chapterid){
+        if(chapterid && chapterid !== 'new'){
             data = await fetchApi('PUT', `write/stories/${storyid}/chapter/${chapterid}/update`, null, {
                 'storyid': storyid,
                 'name': event.target.chapter_title.value,
@@ -46,7 +44,7 @@ const Chapter = (props) => {
 
     const deleteChapter = async () => {
         await fetchApi('DELETE', `write/stories/${storyid}/chapter/${chapterid}/delete`);
-        navigate(`write/stories/${storyid}`);
+        navigate(`/write/story/${storyid}`);
     }
 
     const getData = async() => {
@@ -74,13 +72,11 @@ const Chapter = (props) => {
             });
           }
 
-    }, [storyid, chapterid])
+    }, [storyid, chapterid, props])
 
     useEffect(() => {
-        if (quillRef.current && currentChapter?.content) {
-          quillRef.current.root.innerHTML = currentChapter.content;
-        }
-      }, [currentChapter]);
+        quillRef.current.root.innerHTML = quillRef.current && currentChapter?.content ? currentChapter.content : '';
+      }, [currentChapter, storyid, chapterid, props]);
 
     return (
         <React.Fragment>
@@ -88,13 +84,13 @@ const Chapter = (props) => {
 
             <div className="content">
                 <div className="sidebar_write">
-                    <button className='btn btn-primary' onClick={() => navigate('/write/stories/new')}><i class="fa-solid fa-plus"></i></button>
-                    <span className="write_logo"><i style={{ color: "#405181" }} class="fa-solid fa-pencil"></i> NovelStudio</span>
+                    <button className='btn btn-primary' onClick={() => navigate('/write/stories/new')}><i className="fa-solid fa-plus"></i></button>
+                    <span className="write_logo"><i style={{ color: "#405181" }} className="fa-solid fa-pencil"></i> NovelStudio</span>
 
                     <ul className="list_stories">
-                        {stories.map(story => {
+                        {stories.map((story, i) => {
                             return (
-                                <NavLink to={`/write/story/${story.id}`} exact="true"><li>{story.name}</li></NavLink>
+                                <NavLink key={i} to={`/write/story/${story.id}`} exact="true"><li>{story.name}</li></NavLink>
                             )
                         })}
                     </ul>
@@ -105,7 +101,7 @@ const Chapter = (props) => {
                         <div className="col-md-8">
                             <button className='btn btn-red' onClick={() => deleteChapter()}><i className="fa-solid fa-trash-can"></i> Verwijderen</button>
                             <form method="POST" onSubmit={(event) => addChapter(event)}>
-                                <button type="submit" className='btn btn-green'><i class="fa-solid fa-check"></i> Opslaan</button>
+                                <button type="submit" className='btn btn-green'><i className="fa-solid fa-check"></i> Opslaan</button>
                                 <h1 style={{ marginTop: "30px" }}>{storyid ? (currentStory && currentStory.story ? currentStory.story.name : "Stories") : "Stories"}</h1>
                                 <input type="text" className="form-control" id="chapter_title" name="chapter_title" defaultValue={currentChapter ? currentChapter.name : ''} style={{ marginBottom: "20px", marginTop: "10px" }}/>
                                 <div ref={editorRef} style={{ height: "500px", background: "#ffffff" }}></div>
@@ -113,11 +109,11 @@ const Chapter = (props) => {
                         </div>
                         <div className="col-md-4">
                             <div className="chapters">
-                                <button className='btn btn-primary'><i class="fa-solid fa-plus"></i></button>
+                                <button className='btn btn-primary' onClick={() => navigate(`/write/story/${storyid}/chapter/new`)}><i className="fa-solid fa-plus"></i></button>
                                 <h3>Hoofdstukken</h3>
                                 <ul>
-                                    {currentStory && currentStory.chapters ? currentStory.chapters.map(chapter => {
-                                        return <NavLink to={`/write/story/${props.router.storyid}/chapter/${chapter.id}`} exact="true"><li>{chapter.name}</li></NavLink>
+                                    {currentStory && currentStory.chapters ? currentStory.chapters.map((chapter, i) => {
+                                        return <NavLink key={i} to={`/write/story/${props.router.storyid}/chapter/${chapter.id}`} exact="true"><li>{chapter.name}</li></NavLink>
                                     }) : ''}
                                 </ul>
                             </div>
