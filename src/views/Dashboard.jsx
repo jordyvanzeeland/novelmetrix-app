@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import Genres from "../components/Genres";
 import Books from "../components/Books";
 import Ratings from "../components/Ratings";
@@ -14,7 +13,6 @@ moment.locale('nl');
 const Dashboard = () => {
   const currentyear = new Date().getFullYear();
   const [year, setYear] = useState(currentyear);
-
   const [booksMonth, setBooksMonth] = useState([]);
   const [genres, setGenres] = useState([]);
   const [languages, setLanguages] = useState([]);
